@@ -15,3 +15,5 @@
   
 ### Notes
 - treat exchange students like seniors. (I've just been doing this for the past few years. No issues have popped up, and no one has told me to do otherwise, soooo.... :) )
+
+- Don't forget to add Becky to the frosh list!!
