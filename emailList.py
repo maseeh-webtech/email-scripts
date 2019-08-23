@@ -8,6 +8,8 @@ import csv
 year = 4
 kerberos = 1
 
+class_year = "2019"
+
 with open("rostersp19.csv", "rbU") as csvfile:
     reader = csv.reader(csvfile, delimiter=",", quotechar="\n")
     first = True
@@ -15,8 +17,8 @@ with open("rostersp19.csv", "rbU") as csvfile:
         if first:
             first = False
             continue
-        if row[year] == "2019" or row[year] == "exchange": #row[year] != "2020" and row[year] != "":
+        if row[year] == class_year: # or row[year] == "exchange":
             print(row[kerberos])
-            res = subprocess.call(["blanche", "-a", row[kerberos], "maseeh-2019-private"])
+            res = subprocess.call(["blanche", "-a", row[kerberos], "maseeh-" + str(class_year) + "-private"])
             print(res)
 
