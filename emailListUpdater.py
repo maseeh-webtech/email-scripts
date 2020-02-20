@@ -20,8 +20,8 @@ def main():
         print("Missing values in dataframe, see dump above")
         return
 
-    clearLists(["maseeh-{}-private".format(year) for year in yearMapper.values()])
-    addYearLists(roster)
+    # clearLists(["maseeh-{}-private".format(year) for year in yearMapper.values()])
+    # addYearLists(roster)
 
     clearLists(["maseeh{}-freshmen".format(floor) for floor in range(7)])
     addFroshLists(roster)
@@ -64,7 +64,7 @@ def addFroshLists(roster):
     """
     freshmen = roster[roster["year"] == "Freshman"]
     for _, row in freshmen.iterrows():
-        floor = int(row.room[-4:]) // 1000
+        floor = int(str(row.room)[-4:]) // 1000
         listName = "maseeh{}-freshmen".format(floor)
         cmd = ["blanche", listName, "-a", row.kerberos]
         res = subprocess.call(cmd)
