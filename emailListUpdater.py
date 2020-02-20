@@ -11,11 +11,17 @@ yearMapper = {
 
 def main():
 
-    fileName = "roster082519.csv"
+    fileName = "roster021920.csv"
     roster = pd.read_csv(fileName)[["kerberos", "firstname", "lastname", "room", "year"]]
+    if roster.isnull().values.any():
+        print(roster[pd.isnull(roster["kerberos"])])
+        print(roster[pd.isnull(roster["room"])])
+        print(roster[pd.isnull(roster["year"])])
+        print("Missing values in dataframe, see dump above")
+        return
 
-    # clearLists(["maseeh-{}-private".format(year) for year in yearMapper.values()])
-    # addYearLists(roster)
+    clearLists(["maseeh-{}-private".format(year) for year in yearMapper.values()])
+    addYearLists(roster)
 
     clearLists(["maseeh{}-freshmen".format(floor) for floor in range(7)])
     addFroshLists(roster)
@@ -36,7 +42,7 @@ def clearLists(lists):
             else:
                 print("Error running command: {}".format(cmd))
 
-def addYearLists(fileName):
+def addYearLists(roster):
     """
     Adds members to their year's list (maseeh-yyyy-private) based on yearMapper 
     and their listed year.
